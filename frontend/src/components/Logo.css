@@ -1,0 +1,53 @@
+/* ============================================================================
+   Logo
+   ----------------------------------------------------------------------------
+   The PiAf mark is orange with dark burgundy shading, so placing it directly
+   on the burgundy sidebar loses its darker strokes into the background. It
+   therefore sits on a white plate, which is also how the logo appears on
+   princetoninafrica.org.
+   ========================================================================== */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Sidebar: square white plate holding the mark. */
+.logo--plate {
+  width: 34px;
+  height: 34px;
+  padding: 4px;
+  background: #fff;
+  border-radius: var(--r-md);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+}
+
+/* For light surfaces, where no plate is needed. */
+.logo--bare {
+  width: 30px;
+  height: 30px;
+}
+
+.logo-fallback {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: var(--r-md);
+  background: var(--accent-500);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}

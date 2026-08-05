@@ -1,0 +1,400 @@
+/* ============================================================================
+   Application shell: styles
+   ----------------------------------------------------------------------------
+   The sidebar uses PiAf burgundy as a dark chrome surface. Because it sits at
+   8.56:1 against white text it functions as a near-black with brand warmth,
+   which keeps the orange accent free to mean "active" and nothing else.
+   ========================================================================== */
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* ── Sidebar ───────────────────────────────────────────────────────────── */
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 60;
+  width: var(--sidebar-w);
+  display: flex;
+  flex-direction: column;
+  background: var(--brand-700);
+  border-right: 1px solid var(--brand-800);
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  height: var(--topbar-h);
+  padding: 0 var(--s-4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  flex-shrink: 0;
+}
+
+/* The mark carries no text at this size, so the organisation name is set in
+   real type beside it. */
+.sidebar__brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.sidebar__product {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.sidebar__org {
+  font-size: var(--fs-xs);
+  color: #D8BEB2; /* 4.86:1 on burgundy */
+  white-space: nowrap;
+}
+
+.sidebar__close {
+  display: none;
+  margin-left: auto;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  border-radius: var(--r-sm);
+  color: #D8BEB2;
+}
+
+.sidebar__close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.sidebar__nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--s-3);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  width: 100%;
+  padding: 8px var(--s-3);
+  background: transparent;
+  border: none;
+  border-radius: var(--r-md);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  color: #E9D9CF; /* 6.23:1 on burgundy */
+  text-align: left;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.nav-item svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.nav-item:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.nav-item.is-active {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav-item.is-active svg {
+  opacity: 1;
+}
+
+/* The active marker is the one place PiAf orange appears in the chrome. */
+.nav-item.is-active::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--s-3) * -1 + 2px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  border-radius: var(--r-full);
+  background: var(--accent-500);
+}
+
+.sidebar__footer {
+  flex-shrink: 0;
+  padding: var(--s-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  align-items: flex-start;
+}
+
+.sidebar__footer-note {
+  font-size: var(--fs-xs);
+  color: #C9A99B;
+  line-height: 1.4;
+}
+
+.sidebar__scrim {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(28, 25, 23, 0.45);
+  border: none;
+  padding: 0;
+  animation: fade-in var(--dur) var(--ease);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Source pill ───────────────────────────────────────────────────────── */
+
+.source-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  font-size: var(--fs-xs);
+  font-weight: 550;
+  white-space: nowrap;
+  cursor: help;
+}
+
+.source-pill--live {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid var(--success-border);
+}
+
+.source-pill--snapshot {
+  background: var(--warning-bg);
+  color: var(--warning);
+  border: 1px solid var(--warning-border);
+}
+
+/* Inside the dark sidebar the light pill backgrounds would glare, so the
+   pill switches to a translucent treatment there. */
+.sidebar__footer .source-pill--live {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #B7E6D0;
+}
+
+.sidebar__footer .source-pill--snapshot {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--mustard);
+}
+
+/* ── Main column ───────────────────────────────────────────────────────── */
+
+.shell__main {
+  flex: 1;
+  min-width: 0;
+  margin-left: var(--sidebar-w);
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  height: var(--topbar-h);
+  padding: 0 var(--s-6);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.topbar__menu {
+  display: none;
+  padding: 6px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  color: var(--text-secondary);
+}
+
+.topbar__menu:hover {
+  background: var(--n-100);
+  color: var(--text);
+}
+
+.topbar__context {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-width: 0;
+  font-size: var(--fs-base);
+}
+
+.topbar__crumb {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.topbar__divider {
+  color: var(--n-300);
+}
+
+.topbar__current {
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-left: auto;
+}
+
+.topbar__refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  font-size: var(--fs-base);
+  font-weight: 550;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-xs);
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.topbar__refresh:hover:not(:disabled) {
+  background: var(--n-50);
+  color: var(--text);
+}
+
+.topbar__refresh:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.is-spinning {
+  animation: spin 900ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Content ───────────────────────────────────────────────────────────── */
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: var(--s-8) var(--s-6) var(--s-16);
+}
+
+.content:focus {
+  outline: none;
+}
+
+.content__inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  min-width: 0;
+}
+
+/* The database page is a data grid, so it earns the full window width. */
+.content--wide .content__inner {
+  max-width: none;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .content {
+    padding: var(--s-6) var(--s-5) var(--s-12);
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform var(--dur-slow) var(--ease);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .sidebar__close {
+    display: block;
+  }
+
+  .sidebar__scrim {
+    display: block;
+  }
+
+  .shell__main {
+    margin-left: 0;
+  }
+
+  .topbar {
+    padding: 0 var(--s-4);
+  }
+
+  .topbar__menu {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .content {
+    padding: var(--s-5) var(--s-4) var(--s-12);
+  }
+
+  .topbar__crumb,
+  .topbar__divider {
+    display: none;
+  }
+
+  .topbar__source {
+    display: none;
+  }
+
+  .topbar__refresh-label {
+    display: none;
+  }
+
+  .topbar__refresh {
+    padding: 6px;
+  }
+}
