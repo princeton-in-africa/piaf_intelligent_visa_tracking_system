@@ -1,0 +1,29 @@
+# Fellow reports — real data, never push
+reports/
+reports copy/
+
+# Generated data files
+visa_raw.json
+visa_clean.json
+visa_data.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Mac system files
+.DS_Store
+
+# Virtual environment
+venv/
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Environment variables
+.env
+.env.local
+frontend/.env
+frontend/.env.local
