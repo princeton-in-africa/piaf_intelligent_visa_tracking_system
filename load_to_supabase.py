@@ -16,11 +16,8 @@ with open("visa_clean.json", "r") as f:
 
 print(f"Loaded {len(clean_records)} records from visa_clean.json")
 
-# ── DUPLICATE PREVENTION ───────────────────────────────────
-# Pull every "file" value already sitting in the database, then only
-# insert records whose file isn't in that set. This lets you re-run the
-# whole pipeline (extract -> anonymize -> load) any time you add new
-# reports, without ever double-counting a report that's already in.
+# DUPLICATE PREVENTION 
+
 
 try:
     existing = supabase.table("visa_records").select("file").execute()
@@ -40,13 +37,7 @@ new_records = [r for r in clean_records if r.get("file") not in existing_files]
 print(f"Already in database: {len(already_in_db)}")
 print(f"New records to insert: {len(new_records)}")
 
-# ── LOCAL-ONLY QUALITY FLAGS ───────────────────────────────
-# anonymize.py adds "is_suspected_duplicate" and "duplicate_of" so you get a
-# duplicate warning in the terminal. Those columns don't exist in Supabase and
-# adding them would force a schema change, so we strip them before inserting.
-# The dashboard re-detects duplicates on its own using the same rule, so
-# nothing is lost by leaving them out of the database.
-
+# LOCAL-ONLY QUALITY FLAGS 
 LOCAL_ONLY_FIELDS = ("is_suspected_duplicate", "duplicate_of")
 
 

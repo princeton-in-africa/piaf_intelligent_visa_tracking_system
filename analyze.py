@@ -12,7 +12,7 @@ countries = [r["country"] for r in records if r.get("country")]
 print(f"Countries covered: {len(set(countries))}")
 print(f"Years covered: {sorted(set(r['year'] for r in records if r.get('year')))}\n")
 
-# ── COMPLICATION RATE BY COUNTRY ──────────────────────────
+# COMPLICATION RATE BY COUNTRY 
 print("--- COMPLICATION RATE BY COUNTRY ---")
 by_country = defaultdict(list)
 for r in records:
@@ -25,10 +25,10 @@ for country in sorted(by_country.keys()):
     complications = sum(1 for r in country_records if r.get("had_challenges") in ["Yes", "Minor"])
     known = sum(1 for r in country_records if r.get("had_challenges") in ["Yes", "Minor", "No"])
     rate = round(complications / known * 100) if known > 0 else 0
-    flag = " ⚠️  HIGH RISK" if rate >= 60 else (" ✓ LOW RISK" if rate <= 20 else "")
+    flag = " HIGH RISK" if rate >= 60 else (" ✓ LOW RISK" if rate <= 20 else "")
     print(f"  {country}: {rate}% complication rate ({total} reports){flag}")
 
-# ── VISA TYPES BY COUNTRY ─────────────────────────────────
+# VISA TYPES BY COUNTRY 
 print("\n--- VISA TYPES USED BY COUNTRY ---")
 for country in sorted(by_country.keys()):
     visa_types = [r["visa_type"] for r in by_country[country] if r.get("visa_type")]
@@ -36,7 +36,7 @@ for country in sorted(by_country.keys()):
     inconsistent = " ⚠️  INCONSISTENT" if len(unique) > 1 else ""
     print(f"  {country}: {', '.join(sorted(unique))}{inconsistent}")
 
-# ── WHO PAYS ──────────────────────────────────────────────
+# WHO PAYS 
 print("\n--- WHO COVERS VISA COSTS ---")
 payers = [r["who_paid"] for r in records if r.get("who_paid")]
 for payer in sorted(set(payers)):
@@ -44,7 +44,7 @@ for payer in sorted(set(payers)):
     pct = round(count / len(payers) * 100)
     print(f"  {payer}: {count} fellows ({pct}%)")
 
-# ── BEFORE OR AFTER ARRIVAL ───────────────────────────────
+# BEFORE OR AFTER ARRIVAL 
 print("\n--- VISA OBTAINED BEFORE OR AFTER ARRIVAL ---")
 timing = [r["before_or_after_arrival"] for r in records if r.get("before_or_after_arrival")]
 for t in sorted(set(timing)):
@@ -52,13 +52,13 @@ for t in sorted(set(timing)):
     pct = round(count / len(timing) * 100)
     print(f"  {t}: {count} fellows ({pct}%)")
 
-# ── ADVICE FROM PAST FELLOWS ──────────────────────────────
+# ADVICE FROM PAST FELLOWS 
 print("\n--- ADVICE FROM PAST FELLOWS ---")
 for r in records:
     if r.get("advice_for_future_fellows") and r.get("country"):
         print(f"  [{r['country']}] {r['advice_for_future_fellows']}")
 
-# ── KEY FINDINGS ──────────────────────────────────────────
+# KEY FINDINGS 
 print("\n--- KEY FINDINGS FOR PIAF ---")
 
 high_risk = [c for c in by_country if

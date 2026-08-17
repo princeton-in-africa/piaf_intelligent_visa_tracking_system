@@ -1,7 +1,4 @@
-/* ============================================================================
-   App root: the few styles that belong to the shell's children rather than to
-   any single page or component.
-   ========================================================================== */
+
 
 .source-banner {
   margin-bottom: var(--s-5);
@@ -15,8 +12,7 @@
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
   color: var(--text);
-  /* Must wrap: holding this command on one line overflows the notice card at
-     narrow widths and forces the whole page to scroll sideways. */
+  
   white-space: normal;
   overflow-wrap: anywhere;
 }

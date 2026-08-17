@@ -211,7 +211,7 @@ def anonymize_record(record):
         "advice_for_future_fellows": clean_text(record.get("advice_for_future_fellows")),
     }
 
-# ── MAIN ──────────────────────────────────────────────────
+# MAIN
 
 print("=== ANONYMIZING AND NORMALIZING VISA DATA ===\n")
 

@@ -1,18 +1,7 @@
-/* ============================================================================
-   Analytics
-   ----------------------------------------------------------------------------
-   Every function here answers a question a PiAf staff member would actually
-   ask before advising a Fellow or a host organisation.
 
-   One rule runs through all of it: with only ~21 reports, a single Fellow's
-   experience can look like a 100% failure rate. Rates are therefore always
-   returned alongside the sample they came from, and anything under three
-   reports is labelled low-confidence rather than being presented as a finding.
-   ========================================================================== */
 
 export const LOW_CONFIDENCE_THRESHOLD = 3
 
-/* ── Core measures ─────────────────────────────────────────────────────── */
 
 /** Records where we actually know the outcome (excludes "Unknown"). */
 export function knownOutcomes(records) {
@@ -49,7 +38,6 @@ export const RISK_LABELS = {
   unknown: 'No data',
 }
 
-/* ── Grouping ──────────────────────────────────────────────────────────── */
 
 export function groupBy(records, key) {
   const groups = new Map()
@@ -193,7 +181,6 @@ export function yearlyTrend(records) {
     .sort((a, b) => String(a.year).localeCompare(String(b.year)))
 }
 
-/* ── Executive summary ─────────────────────────────────────────────────── */
 
 /**
  * Generate the plain-English findings shown at the top of the dashboard.

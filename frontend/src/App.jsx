@@ -1,10 +1,3 @@
-/* ============================================================================
-   App root
-   ----------------------------------------------------------------------------
-   Owns three things and nothing else: which page is showing, the loaded data,
-   and cross-page navigation (clicking a country on the Dashboard opens it in
-   Lookup). All rendering lives in the page components.
-   ========================================================================== */
 
 import { useCallback, useEffect, useState } from 'react'
 import './App.css'
@@ -41,11 +34,7 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    // Fetching data on mount is exactly what an effect is for. Every setState
-    // in `load` runs after `await loadRecords()` resolves, so nothing updates
-    // state synchronously during this effect. The lint rule cannot see through
-    // the async boundary to verify that.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+  
     void load()
   }, [load])
 

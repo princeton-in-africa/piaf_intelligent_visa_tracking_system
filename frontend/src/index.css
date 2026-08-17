@@ -1,51 +1,26 @@
-/* ============================================================================
-   PiAf Visa Intelligence: design tokens and base styles
-   ----------------------------------------------------------------------------
-   Colours are taken from Princeton in Africa's own production stylesheet
-   (princetoninafrica.org/wp-content/themes/piaf2/style.css), so this dashboard
-   is on-brand rather than approximating it:
 
-     #813427  burgundy    PiAf's primary brand colour (their body text)
-     #F17022  orange      PiAf's accent / link / hover colour
-     #FFBC59  mustard     PiAf's button + stat-tile colour
-     #F3E7CF  beige       PiAf's section background
-     #E5D6B7  tan         PiAf's borders
-     #2E485C  dark blue   PiAf's footer / secondary surface
-     #8D3661  purple      PiAf's tertiary accent
-
-   Two accessibility rules govern how they are used here:
-
-   1. PiAf orange scores only 2.97:1 on white, which fails WCAG for text.
-      Orange is therefore used ONLY for large accent surfaces, the active
-      navigation rail and chart fills, never for small text on white.
-      Burgundy (8.56:1, AAA) carries all brand-coloured text instead.
-
-   2. Brand colours never encode data severity. Burgundy is chrome, orange is
-      accent. Risk uses a separate, deliberately distinct red/amber/green
-      triad so "brand" and "bad" can never be confused.
-   ========================================================================== */
 
 :root {
-  /* ── Brand: burgundy ramp ─────────────────────────────────────────────── */
+
   --brand-50: #FBF4F1;
   --brand-100: #F5E4DE;
   --brand-200: #E9C9BD;
   --brand-300: #D6A08D;
   --brand-400: #B86A52;
   --brand-500: #9C4733;
-  --brand-600: #813427; /* PiAf burgundy, 8.56:1 on white (AAA) */
+  --brand-600: #813427; 
   --brand-700: #6B2A20;
   --brand-800: #522018;
   --brand-900: #3B1712;
 
-  /* ── Accent: PiAf orange (surfaces & fills only, never small text) ────── */
+  
   --accent-100: #FDE8D8;
   --accent-300: #F8AE74;
-  --accent-500: #F17022; /* PiAf orange */
+  --accent-500: #F17022; 
   --accent-600: #D45C14;
   --accent-700: #B84B19;
 
-  /* ── Supporting brand hues ───────────────────────────────────────────── */
+ 
   --mustard: #FFBC59;
   --mustard-dark: #F2AF54;
   --beige: #F3E7CF;
@@ -53,7 +28,7 @@
   --ink-blue: #2E485C;
   --plum: #8D3661;
 
-  /* ── Neutrals: warm-tinted to sit with the burgundy brand ─────────────── */
+ 
   --n-0: #FFFFFF;
   --n-25: #FDFCFB;
   --n-50: #FAFAF9;
@@ -68,7 +43,7 @@
   --n-800: #292524;
   --n-900: #1C1917;
 
-  /* ── Semantic surfaces ───────────────────────────────────────────────── */
+  
   --bg: var(--n-50);
   --surface: var(--n-0);
   --surface-sunken: var(--n-100);
@@ -76,28 +51,28 @@
   --border: var(--n-200);
   --border-strong: var(--n-300);
 
-  /* ── Semantic text (all AA or better on --surface) ───────────────────── */
-  --text: var(--n-900);           /* 17.5:1 */
-  --text-secondary: var(--n-600); /* 7.6:1  */
-  --text-muted: var(--n-500);     /* 4.8:1, the lowest allowed for text */
+ 
+  --text: var(--n-900);           
+  --text-secondary: var(--n-600); 
+  --text-muted: var(--n-500);     
   --text-on-brand: #FFFFFF;
   --text-brand: var(--brand-600);
 
-  /* ── Risk / status semantics (deliberately distinct from brand) ───────── */
-  --danger: #B4232B;          /* 6.5:1 */
+  
+  --danger: #B4232B;          
   --danger-bg: #FDEDED;
   --danger-border: #F6C9C9;
-  --warning: #B45309;         /* 5.0:1 */
+  --warning: #B45309;        
   --warning-bg: #FEF6EC;
   --warning-border: #F8DFC0;
-  --success: #047857;         /* 5.5:1 */
+  --success: #047857;         
   --success-bg: #ECFAF4;
   --success-border: #BFE8D8;
-  --info: #2E485C;            /* 9.6:1 */
+  --info: #2E485C;            
   --info-bg: #EEF3F7;
   --info-border: #CBD9E4;
 
-  /* ── Categorical chart palette (PiAf hues, distinguishable in order) ──── */
+  
   --chart-1: #813427;
   --chart-2: #2E485C;
   --chart-3: #F17022;
@@ -107,7 +82,6 @@
   --chart-7: #B86A52;
   --chart-8: #6E7B8B;
 
-  /* ── Spacing: 4pt base, 8pt rhythm ───────────────────────────────────── */
   --s-1: 4px;
   --s-2: 8px;
   --s-3: 12px;
@@ -119,20 +93,18 @@
   --s-12: 48px;
   --s-16: 64px;
 
-  /* ── Radii ───────────────────────────────────────────────────────────── */
   --r-sm: 6px;
   --r-md: 8px;
   --r-lg: 12px;
   --r-xl: 16px;
   --r-full: 999px;
 
-  /* ── Elevation: tight and low-contrast, in the brand's warm hue ──────── */
   --shadow-xs: 0 1px 2px rgba(28, 25, 23, 0.05);
   --shadow-sm: 0 1px 3px rgba(28, 25, 23, 0.07), 0 1px 2px rgba(28, 25, 23, 0.04);
   --shadow-md: 0 4px 12px rgba(28, 25, 23, 0.08), 0 2px 4px rgba(28, 25, 23, 0.04);
   --shadow-lg: 0 12px 32px rgba(28, 25, 23, 0.12), 0 4px 8px rgba(28, 25, 23, 0.05);
 
-  /* ── Type ────────────────────────────────────────────────────────────── */
+
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
   --font-display: 'Raleway', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -149,12 +121,10 @@
   --fs-3xl: 34px;
   --fs-4xl: 44px;
 
-  /* ── Layout ──────────────────────────────────────────────────────────── */
   --sidebar-w: 236px;
   --topbar-h: 56px;
   --content-max: 1360px;
 
-  /* ── Motion ──────────────────────────────────────────────────────────── */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --dur-fast: 120ms;
   --dur: 180ms;
@@ -172,7 +142,6 @@
   font-synthesis-weight: none;
 }
 
-/* ── Reset ──────────────────────────────────────────────────────────────── */
 
 *,
 *::before,
@@ -239,15 +208,13 @@ table {
   border-spacing: 0;
 }
 
-/* Numbers must align in columns. Every figure in the app uses tabular lining
-   figures so digits occupy identical width. */
+
 .tnum,
 td,
 th {
   font-variant-numeric: tabular-nums;
 }
 
-/* ── Focus: one visible, consistent ring everywhere ─────────────────────── */
 
 :focus {
   outline: none;
@@ -259,7 +226,6 @@ th {
   border-radius: var(--r-sm);
 }
 
-/* ── Scrollbars ─────────────────────────────────────────────────────────── */
 
 * {
   scrollbar-width: thin;
@@ -287,7 +253,6 @@ th {
   background-clip: content-box;
 }
 
-/* ── Accessibility: honour reduced-motion ───────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -300,7 +265,6 @@ th {
   }
 }
 
-/* Visible only to screen readers. */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -313,7 +277,6 @@ th {
   border: 0;
 }
 
-/* Keyboard users get a skip link; it stays hidden until focused. */
 .skip-link {
   position: absolute;
   left: var(--s-4);
