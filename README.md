@@ -17,11 +17,16 @@ The system covers both **historical/alumni cases** and a lighter-weight **curren
 
 ## Features
 
-- **Insights dashboard** — quantitative visa statistics with filtering/ranging by **country** and **host organization**
-- **Qualitative context via RAG** — retrieval-augmented generation surfaces relevant qualitative detail from case reports directly in the dashboard, instead of requiring staff to open the original document
-- **Privacy by design** — no fellow names are stored anywhere in the system; cases are tracked by case ID
-- **Two-tier data model** — alumni/historical cases vs. current fellows (current fellows tab is visa-specific, updated as new quarterly reports come in)
-- **Resilient extraction pipeline** — parses fellow reports (PDF) into structured records with label-based parsing, fallback matching for wording drift across report formats, and per-file error isolation so one bad file doesn't break a batch import
+- **Insights dashboard** 
+  - quantitative visa statistics with filtering/ranging by **country** and **host organization**
+- **Qualitative context via RAG**
+  - retrieval-augmented generation surfaces relevant qualitative detail from case reports directly in the dashboard, instead of requiring staff to open the original document
+- **Privacy by design**
+  - no fellow names are stored anywhere in the system; cases are tracked by case ID
+- **Two-tier data model**
+  - alumni/historical cases vs. current fellows (current fellows tab is visa-specific, updated as new quarterly reports come in)
+- **Resilient extraction pipeline**
+  - parses fellow reports (PDF) into structured records with label-based parsing, fallback matching for wording drift across report formats, and per-file error isolation so one bad file doesn't break a batch import
 
 ## Tech Stack
 
