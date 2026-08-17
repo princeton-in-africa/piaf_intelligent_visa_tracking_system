@@ -1,7 +1,7 @@
 # PiAF Intelligent Visa Tracking System
 
 A visa case tracking and analytics platform built for **Princeton in Africa (PiAF)**, designed to give staff a single dashboard for both quantitative and qualitative visa insights across fellows, countries, and host organizations
-**Live app:** Frontend on Vercel · Backend on Render — `https://piaf-intelligent-visa-tracking-system.onrender.com`
+**Live app:** Frontend on Vercel · Backend on Render. 
 
 ---
 
